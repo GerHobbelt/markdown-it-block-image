@@ -43,7 +43,7 @@ var md = require("markdown-it")();
 var blockImagePlugin = require("markdown-it-block-image");
 
 md.use(blockImagePlugin, {
-  outputContainer: true,
+  outputContainer: "div",
   containerClassName: "image-container"
 });
 

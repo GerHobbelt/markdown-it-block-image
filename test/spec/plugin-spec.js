@@ -1,39 +1,39 @@
 // Copyright (c) Rotorz Limited. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root.
 
-"use strict";
-
-const given = require("mocha-testdata");
-const should = require("should");
-const markdownIt = require("markdown-it");
-
-const inlineBlockPlugin = require("../../lib");
 
 
-describe("markdown-it-block-image", function () {
+const given = require('mocha-testdata');
+const should = require('should');
+const markdownIt = require('markdown-it');
+
+const inlineBlockPlugin = require('../../lib');
+
+
+describe('markdown-it-block-image', function () {
 
   given([
     [
-      `![alt text](example.png "title text")`,
-      `<img src="example.png" alt="alt text" title="title text">`
+      '![alt text](example.png "title text")',
+      '<img src="example.png" alt="alt text" title="title text">'
     ],
     [
-      `![alt text](example.png)`,
-      `<img src="example.png" alt="alt text">`
+      '![alt text](example.png)',
+      '<img src="example.png" alt="alt text">'
     ],
     [
-      `![alt text](example.png)    `,
-      `<img src="example.png" alt="alt text">`
+      '![alt text](example.png)    ',
+      '<img src="example.png" alt="alt text">'
     ],
     [
       `![alt text](example.png)
 
 ![alt text](another-example.png)`,
-      `<img src="example.png" alt="alt text"><img src="another-example.png" alt="alt text">`
+      '<img src="example.png" alt="alt text"><img src="another-example.png" alt="alt text">'
     ],
     [
-      `   ![  alt text  ](  example.png  )    `,
-      `<img src="example.png" alt="  alt text  ">`
+      '   ![  alt text  ](  example.png  )    ',
+      '<img src="example.png" alt="  alt text  ">'
     ],
     [
       `Paragraph before
@@ -45,7 +45,7 @@ Paragraph after`,
 <img src="example.png" alt="alt text"><p>Paragraph after</p>`
     ]
   ]).
-  it("outputs image as a block element by default", function (source, expected) {
+  it('outputs image as a block element by default', function (source, expected) {
     let markdownProcessor = markdownIt().use(inlineBlockPlugin);
     markdownProcessor.render(source)
       .trim()
@@ -54,16 +54,16 @@ Paragraph after`,
 
   given([
     [
-      `![alt text](example.png)`,
-      `<div class="block-image"><img src="example.png" alt="alt text"></div>`
+      '![alt text](example.png)',
+      '<div class="block-image"><img src="example.png" alt="alt text"></div>'
     ],
     [
-      `![alt text](example.png)    `,
-      `<div class="block-image"><img src="example.png" alt="alt text"></div>`
+      '![alt text](example.png)    ',
+      '<div class="block-image"><img src="example.png" alt="alt text"></div>'
     ],
     [
-      `   ![  alt text  ](  example.png  )    `,
-      `<div class="block-image"><img src="example.png" alt="  alt text  "></div>`
+      '   ![  alt text  ](  example.png  )    ',
+      '<div class="block-image"><img src="example.png" alt="  alt text  "></div>'
     ],
     [
       `![
@@ -71,12 +71,12 @@ alt text
 ](
 example.png
 )`,
-      `<div class="block-image"><img src="example.png" alt="alt text"></div>`
+      '<div class="block-image"><img src="example.png" alt="alt text"></div>'
     ]
   ]).
-  it("outputs image within a container element", function (source, expected) {
+  it('outputs image within a container element', function (source, expected) {
     let markdownProcessor = markdownIt().use(inlineBlockPlugin, {
-      outputContainer: "div"
+      outputContainer: 'div'
     });
     markdownProcessor.render(source)
       .trim()
@@ -85,22 +85,22 @@ example.png
 
   given([
     [
-      `![alt text](example.png)`,
-      `<div class="custom-container-class"><img src="example.png" alt="alt text"></div>`
+      '![alt text](example.png)',
+      '<div class="custom-container-class"><img src="example.png" alt="alt text"></div>'
     ],
     [
-      `![alt text](example.png)    `,
-      `<div class="custom-container-class"><img src="example.png" alt="alt text"></div>`
+      '![alt text](example.png)    ',
+      '<div class="custom-container-class"><img src="example.png" alt="alt text"></div>'
     ],
     [
-      `   ![  alt text  ](  example.png  )    `,
-      `<div class="custom-container-class"><img src="example.png" alt="  alt text  "></div>`
+      '   ![  alt text  ](  example.png  )    ',
+      '<div class="custom-container-class"><img src="example.png" alt="  alt text  "></div>'
     ]
   ]).
-  it("outputs image within a container element and a custom class name", function (source, expected) {
+  it('outputs image within a container element and a custom class name', function (source, expected) {
     let markdownProcessor = markdownIt().use(inlineBlockPlugin, {
-      outputContainer: "div",
-      containerClassName: "custom-container-class"
+      outputContainer: 'div',
+      containerClassName: 'custom-container-class'
     });
     markdownProcessor.render(source)
       .trim()
@@ -109,12 +109,12 @@ example.png
 
   given([
     [
-      `Normal paragraph: ![alt text](example.png)`,
-      `<p>Normal paragraph: <img src="example.png" alt="alt text"></p>`
+      'Normal paragraph: ![alt text](example.png)',
+      '<p>Normal paragraph: <img src="example.png" alt="alt text"></p>'
     ],
     [
-      `![alt text](example.png) - Normal paragraph!`,
-      `<p><img src="example.png" alt="alt text"> - Normal paragraph!</p>`
+      '![alt text](example.png) - Normal paragraph!',
+      '<p><img src="example.png" alt="alt text"> - Normal paragraph!</p>'
     ],
     [
       `![alt text](example.png)
@@ -143,9 +143,9 @@ text after`,
 text after</p>`
     ]
   ]).
-  it("outputs regular paragraph for non-block images", function (source, expected) {
+  it('outputs regular paragraph for non-block images', function (source, expected) {
     let markdownProcessor = markdownIt().use(inlineBlockPlugin, {
-      outputContainer: "div"
+      outputContainer: 'div'
     });
     markdownProcessor.render(source)
       .trim()

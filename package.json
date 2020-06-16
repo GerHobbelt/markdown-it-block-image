@@ -1,33 +1,50 @@
 {
-  "name": "markdown-it-block-image",
-  "version": "0.0.3",
+  "name": "@gerhobbelt/markdown-it-block-image",
+  "version": "0.0.3-1",
   "description": "Plugin for markdown-it that detects and outputs block level images.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rotorz/markdown-it-block-image"
-  },
   "keywords": [
     "markdown-it",
     "markdown-it-plugin",
     "image"
   ],
-  "main": "lib/index.js",
-  "scripts": {
-    "test": "make test",
-    "build": "make"
-  },
   "author": "Rotorz Limited",
+  "repository": "rotorz/markdown-it-block-image",
   "license": "MIT",
-  "dependencies": {},
+  "source": "index.js",
+  "main": "dist/markdownItBlockImage.js",
+  "module": "dist/markdownItBlockImage.mjs",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "build": "make",
+    "test": "make test",
+    "todo": "make todo",
+    "clean": "make clean",
+    "superclean": "make superclean",
+    "doc": "make doc",
+    "lint": "make lint",
+    "lintfix": "make lintfix",
+    "cov": "make report-coverage",
+    "pub": "npm publish --access public"
+  },
   "devDependencies": {
-    "browserify": "14.4.0",
-    "eslint": "4.4.0",
-    "istanbul": "0.4.5",
-    "markdown-it": "GerHobbelt/markdown-it#master",
-    "markdown-it-testgen": "GerHobbelt/markdown-it-testgen#master",
-    "mocha": "3.5.0",
+    "@gerhobbelt/markdown-it": "11.0.0-36",
+    "@gerhobbelt/markdown-it-testgen": "0.1.6-7",
+    "@gerhobbelt/prepend-header": "1.0.8-3",
+    "camelcase": "6.0.0",
+    "chai": "4.2.0",
+    "cross-env": "7.0.2",
+    "eslint": "7.2.0",
+    "microbundle": "0.12.1",
+    "mocha": "8.0.1",
     "mocha-testdata": "1.2.0",
-    "should": "11.2.1",
-    "uglify-js": "3.0.27"
-  }
+    "should": "13.2.3",
+    "nyc": "15.1.0"
+  },
+  "reporter": [
+    "lcov",
+    "text",
+    "text-summary"
+  ]
 }
